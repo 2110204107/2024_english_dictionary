@@ -20,7 +20,7 @@ def read(word):
         if means:
             for mean in means:
                 posgram = mean.find('div', class_="posgram").text.strip()
-                return(f'{posgram}:')
+                sen = f'{posgram}:'
 
                 def_bodies = mean.find_all("div", class_="def-body")
 
@@ -28,8 +28,9 @@ def read(word):
                     i = 1
                     for def_body in def_bodies:
                         translation = def_body.find('span').text.strip()
-                        return(f'{i}. {translation}')
+                        sen += f'{i}. {translation}'
                         i += 1
+                    return sen
                 else:
                     return('查無此字。')
         else:
