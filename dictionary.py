@@ -2,13 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 
 def read(word):
-    # word = input('請輸入要查詢的英文單字: ')
+#     word = input('請輸入要查詢的英文單字: ')
     url = f'https://dictionary.cambridge.org/dictionary/english-chinese-traditional/{word}'
 
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36"
     headers = {'User-Agent': user_agent}
 
-    print(word+'的查詢結果：')
+#     print(word+'的查詢結果：')
 
     try:
         web_request = requests.get(url, headers=headers)
@@ -20,7 +20,7 @@ def read(word):
         if means:
             for mean in means:
                 posgram = mean.find('div', class_="posgram").text.strip()
-                print(f'{posgram}:')
+                return(f'{posgram}:')
 
                 def_bodies = mean.find_all("div", class_="def-body")
 
@@ -28,12 +28,12 @@ def read(word):
                     i = 1
                     for def_body in def_bodies:
                         translation = def_body.find('span').text.strip()
-                        print(f'{i}. {translation}')
+                        return(f'{i}. {translation}')
                         i += 1
                 else:
-                    print('查無此字。')
+                    return('查無此字。')
         else:
-            print('查無此字。')
+            return('查無此字。')
 
     except error:
-        print('查無此字')
+        return('查無此字')
