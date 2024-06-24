@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def read(word):
-    word = input('請輸入要查詢的英文單字: ')
+    # word = input('請輸入要查詢的英文單字: ')
     url = f'https://dictionary.cambridge.org/dictionary/english-chinese-traditional/{word}'
 
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36"
